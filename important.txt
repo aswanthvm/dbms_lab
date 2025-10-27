@@ -1,0 +1,125 @@
+1.BOOK (Book_id, Title, Publisher_Name, Pub_Year) BOOK_AUTHORS (Book_id, Author_Name) PUBLISHER (Name, Address, Phone) BOOK_COPIES (Book_id, Branch_id, No-of_Copies) BOOK_LENDING (Book_id, Branch_id, Card_No, Date_Out, Due_Date) LIBRARY_BRANCH (Branch_id, Branch_Name, Address)
+Write SQL queries to
+a.	List of books with more than 5 copies.
+b.	List of books with pub_Year 1991 
+c.	Get the particulars of borrowers who have borrowed more than 3 books.
+d.	Delete a book in BOOK table. Update the contents of other tables to reflect this data manipulation operation.
+e.	Create a view of all books and its number of copies that are currently available in the Library.
+
+2. Create the table and update it using mongodb.
+
+
+DONE
+1.	Consider the schema for CompanyDatabase: EMPLOYEE (SSN, fName, lName, Address, Sex, Salary, SuperSSN, DNo) DEPARTMENT (DNo, DName, MgrSSN, MgrStartDate) DLOCATION (DNo,DLoc) PROJECT (PNo, PName, PLocation, DNo) WORKS_ON (SSN, PNo, Hours) 
+Write SQL queries to  
+1.	Make a list of all project numbers for projects that involve an employee whose last name is ‘Scott’, either as a worker or as a manager of the department that controls the project. 
+2.	Show the resulting salaries if every employee working on the ‘IoT’ project is given a 10 percentraise. 
+3.	Find the sum of the salaries of all employees of the ‘Accounts’ department.
+4.	Display the employee with minimum salary. 
+5.	Retrieve the name of each employee who works on all the projects controlled by department number 5 
+6.	Retrieve the number of employees whose salary more than Rs.6,00,000.
+
+2.	Write a Program to Check whether the given number is Palindrome in PL/SQL
+
+DONE
+
+1.	Create The following two tables: College-info Faculty-info 
+College-info consists of fields: college-code, college-name, address 
+Faculty-info consists of fields: college-code, faculty-code, faculty-name, qualification, experience-in-no-of-years, address. 
+The field college-code is foreign key.    
+(i)	List all those faculty members whose experience is greater than or equal to 10 years and have M. Tech degree. 
+(ii)	 List all those faculty members, who have at least 10 years of experience but do not have M. Tech degree. 
+(iii)	 List all college names of the faculty members whose experience is less than 2 years and higher qualification is phd.
+
+2. Write a Insert Trigger to check the college-code is exactly 4 digits or not.
+Write a trigger on college-info to display messages „1 Record is inserted‟, „1 record is deleted‟, „1 record is updated‟ when insertion, deletion and updation are done on college-info respectively.
+
+1. SALESMAN (Salesman_id, Name, City, state, Commission) CUSTOMER (Customer_id, Cust_Name, City, Grade, Salesman_id) ORDERS (Ord_No, Purchase_Amt, Ord_Date, Customer_id, Salesman_id) 
+Write SQL queries to 
+1.	Count the customers with grades above 5
+2.	Find the Bangalore’s average in grade.
+3. Find the name and numbers of all salesmen who had more than one customer. 
+4. List all salesmen and indicate those who have and don’t have customers in their cities 
+5. Create a view that finds the salesman who has the customer with the highest order of a day. 
+5. Remove salesman with id 1000. All his orders must also be deleted.
+
+2.	Write a PL/SQL block that will display the salesman details along with commission using cursors.
+Write a Cursor to display the list of salesmen whose city is banglore and state is karnatka.
+
+1.	Create the following tables: Student (roll-no, name, date-of-birth, course-id) Course (Course-id, name, fee, duration) . 
+Generate queries to do the following 
+(i)	List all those students who are greater than 18 years of age and have opted for MCA course. 
+(ii)	List all those courses whose fee is greater than that of MCA course. 
+(iii)	 List out the name of all the students whose fees is greater than that of MCA course fees in the descending order of their names.
+
+. 2. Convert student name into uppercase whenever a student record is inserted or updated. Trigger to fire before the insert or update.
+
+1.	Consider the schema for College Database: STUDENT (USN, SName, Address, Phone, Gender) SEMSEC (SSID, Sem, Sec) CLASS (USN, SSID) SUBJECT (Subcode, Title, Sem, Credits) IAMARKS (USN, Subcode, SSID, Test1, Test2, Test3, FinalIA) 
+Write SQL queries to
+a.	List name of all the student details studying in fourth semester with Sec=”C”
+b.	Compute the total number of male and female students in each semester and in each section. Where male denoted by ‘M’ and female by ‘F’.
+c.	Create a view of Test1 marks of student USN ‘1BI15CS101’ in all subjects. 
+d.	 Calculate the FinalIA (average of best two test marks) and update the corresponding table for all students. 
+e.	List out students with CAT =‘Outstanding’ that is  FinalIA = 17 to 20. Give these details only for 8th semester A, B, and C section students.
+2.	Write a Program to Check whether the given number is Prime or not in PL/SQL
+
+
+1.	Create the following tables: Student (roll-no, name, subject-opted,marks) Subject –rank (subject-code, subject-name, faculty-code) Faculty (faculty-code, faculty-name, specialization) 
+Generate queries to do the following: 
+(i)	Find the number of students who have enrolled for the subject "OS" 
+(ii)	Find all those students who opted for more than 5 subjects. 
+(iii)	List out the name of the students whose specialisation is “IP”
+2.	Write a PL/SQL block that will display the student details along with subject opted using cursors.
+write a cursor to select the five highest marks scored students from the table.
+
+
+
+1.	Consider the schema for MovieDatabase: ACTOR (Act_id, Act_Name, Act_Gender) DIRECTOR (Dir_id, Dir_Name, Dir_Phone) MOVIES (Mov_id, Mov_Title, Mov_Year, Mov_Lang, Dir_id) MOVIE_CAST (Act_id, Mov_id, Role) RATING (Mov_id, Rev_Stars) 
+Write SQL queries to 
+1. List the titles of all movies directed by ‘Hitchcock’.
+ 2. Find the movie names where one or more actors acted in two or more movies. 
+3. List all actors who acted in a movie before 2000 and also in a movieafter 2015. 
+4. Find the title of movies and number of stars for each movie that has at least one rating and find the highest number of stars that movie received. Sort the result by movie title. 
+5. Update rating of all movies directed by ‘Steven Spielberg’ to5.
+
+2.	Write a PL/SQL program for Fibonacci series
+
+
+
+
+1.	Create the following tables: 
+Student (roll-no, name, subject-opted, subject-code) 
+Subject –rank (subject-code, subject-name, faculty-code) 
+Faculty (faculty-code, faculty-name, specialization) 
+Generate queries to do the following:
+(i)	Find the number of students who have enrolled for the subject "DBMS" 
+(ii)	Find all those subjects which are offered by more than one faculty member.
+(iii)	List out the name of students whose specialization is “Signal Processing”
+2.	Write a PL/SQL block that will display the student details along with subject code using cursors.
+To write a Cursor to find students with given subject-opted and subject-code.
+ 
+1.	Consider the schema for CompanyDatabase: EMPLOYEE (Eno, fName, lName, Sex, Salary, SuperSSN, DNo) DEPARTMENT (DNo, DName,) DLOCATION (DNo,DLoc) PROJECT (PNo, PName, PLocation, DNo) company(NB,Revenue)
+Where NB is the number of employees.
+Write SQL queries to  
+1.	List all those employees who are greater than 45 years of age and works under the project “Hoc”
+2.	Find the sum of the salaries of all employees of the ‘clerk department, as well as the maximum salary, the minimum salary, and the average salary in this department
+3.	Retrieve the first name of female employee who works on all the projects controlled by department number 2.
+2.	Create two triggers that will result in the automatic tracking of the number of employees a company manages. The first trigger increments the number of employees each time a new person is hired and The second trigger decrements the number of employees each time an employee leaves the company.
+
+
+1.	Create the following tables:
+STUDENT (Student#, LastName, FirstName, Address, City, State, Zip, Enroll_Date)
+COURSE (Course#, Title, CrHour, InstName)
+INSTRUCTOR (InstName, InstOffice, Rank)
+Take (Student#, Course#, Grade)
+Generate queries to do the following:
+(i)	Find the number of students who have enrolled for the subject physics and grade “A” 
+(ii)	List out all the students under the instructor ‘Alice’
+(iii)	List out the name of students who have enrolled for the subject chemistry with course number 101 and city ‘kochi’ in ascending order.
+(iv)	Create a view of all students with course number and instructor name.
+
+
+2.	Create the table update and delete it using mongodb
+
+BOOK (Book_id, Title, Publisher_Name, Pub_Year) BOOK_AUTHORS (Book_id, Author_Name) PUBLISHER (Name, Address, Phone) BOOK_COPIES (Book_id, Branch_id, No-of_Copies) BOOK_LENDING (Book_id, Branch_id, Card_No, Date_Out, Due_Date) LIBRARY_BRANCH (Branch_id, Branch_Name, Address)
+Write SQL queries to
