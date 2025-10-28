@@ -143,3 +143,112 @@ ORDER BY m.Mark ASC;
 ------------------------------------------------------------
 -- End of Script
 ------------------------------------------------------------
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-- 1. Create Tables
+CREATE TABLE EMPLOYEE (
+    SSN NUMBER PRIMARY KEY,
+    fName VARCHAR2(20),
+    lName VARCHAR2(20),
+    Address VARCHAR2(50),
+    Sex CHAR(1),
+    Salary NUMBER,
+    SuperSSN NUMBER,
+    DNo NUMBER
+);
+
+CREATE TABLE DEPARTMENT (
+    DNo NUMBER PRIMARY KEY,
+    DName VARCHAR2(20),
+    MgrSSN NUMBER,
+    MgrStartDate DATE
+);
+
+CREATE TABLE DLOCATION (
+    DNo NUMBER,
+    DLoc VARCHAR2(20)
+);
+
+CREATE TABLE PROJECT (
+    PNo NUMBER PRIMARY KEY,
+    PName VARCHAR2(20),
+    PLocation VARCHAR2(20),
+    DNo NUMBER
+);
+
+CREATE TABLE WORKS_ON (
+    SSN NUMBER,
+    PNo NUMBER,
+    Hours NUMBER
+);
+
+-- 2. Insert Sample Data
+INSERT INTO EMPLOYEE VALUES(1,'John','Scott','Addr1','M',500000,NULL,10);
+INSERT INTO EMPLOYEE VALUES(2,'Alice','Brown','Addr2','F',600000,1,20);
+INSERT INTO EMPLOYEE VALUES(3,'Bob','White','Addr3','M',550000,1,10);
+
+INSERT INTO DEPARTMENT VALUES(10,'Accounts',1,TO_DATE('2020-01-01','YYYY-MM-DD'));
+INSERT INTO DEPARTMENT VALUES(20,'IT',2,TO_DATE('2019-05-01','YYYY-MM-DD'));
+
+INSERT INTO PROJECT VALUES(101,'IoT','NewYork',10);
+INSERT INTO PROJECT VALUES(102,'AI','Boston',20);
+
+INSERT INTO WORKS_ON VALUES(1,101,10);
+INSERT INTO WORKS_ON VALUES(2,101,15);
+INSERT INTO WORKS_ON VALUES(3,102,20);
+
+COMMIT;
+
+-- 3. Queries
+
+-- (1) Projects involving employee 'Scott'
+SELECT DISTINCT P.PNo
+FROM PROJECT P
+JOIN WORKS_ON W ON P.PNo = W.PNo
+JOIN EMPLOYEE E ON W.SSN = E.SSN
+WHERE E.lName = 'Scott'
+UNION
+SELECT DISTINCT P.PNo
+FROM PROJECT P
+JOIN DEPARTMENT D ON P.DNo = D.DNo
+JOIN EMPLOYEE E ON D.MgrSSN = E.SSN
+WHERE E.lName = 'Scott';
+
+-- (2) Salaries after 10% raise for 'IoT' project
+SELECT E.SSN, E.fName, E.lName, E.Salary * 1.10 AS New_Salary
+FROM EMPLOYEE E
+JOIN WORKS_ON W ON E.SSN = W.SSN
+JOIN PROJECT P ON W.PNo = P.PNo
+WHERE P.PName = 'IoT';
+
+-- (3) Sum of salaries of 'Accounts' department
+SELECT SUM(E.Salary) AS Total_Salary
+FROM EMPLOYEE E
+JOIN DEPARTMENT D ON E.DNo = D.DNo
+WHERE D.DName = 'Accounts';
+
+-- (4) Employee with minimum salary
+SELECT *
+FROM EMPLOYEE
+WHERE Salary = (SELECT MIN(Salary) FROM EMPLOYEE);
+
+-- (5) Employees who work on all projects of department 5
+SELECT E.fName, E.lName
+FROM EMPLOYEE E
+WHERE NOT EXISTS (
+    SELECT P.PNo
+    FROM PROJECT P
+    WHERE P.DNo = 5
+    AND NOT EXISTS (
+        SELECT W.SSN
+        FROM WORKS_ON W
+        WHERE W.SSN = E.SSN AND W.PNo = P.PNo
+    )
+);
+
+-- (6) Number of employees with salary > 600000
+SELECT COUNT(*) AS Num_Employees
+FROM EMPLOYEE
+WHERE Salary > 600000;
+
+
