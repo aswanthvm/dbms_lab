@@ -134,6 +134,8 @@ practice2.sql
 prime.sql
 sum_of_digits.sql
 
+
+https://dbmslab-ten.vercel.app/
 ── trigger.txt
 ├── ControllStructures
 │   ├── Bill.txt
@@ -153,3 +155,4 @@ sum_of_digits.sql
     ├── 1.txt
     ├── 2.txt
     └── 3.txt
+
