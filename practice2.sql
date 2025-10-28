@@ -165,4 +165,23 @@ BEGIN
     END LOOP;
 END;
 /
+#################'########
+SET SERVEROUTPUT ON;
 
+CREATE OR REPLACE PROCEDURE show_movie_names AS
+    CURSOR movie_cur IS
+        SELECT Mov_Title FROM MOVIES;
+    v_title MOVIES.Mov_Title%TYPE;
+BEGIN
+    OPEN movie_cur;
+    LOOP
+        FETCH movie_cur INTO v_title;
+        EXIT WHEN movie_cur%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE('Movie: ' || v_title);
+    END LOOP;
+    CLOSE movie_cur;
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+END;
+/
